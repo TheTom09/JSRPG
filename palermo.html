@@ -51,6 +51,10 @@
       </div>
     </div>
   </div>
+  <div id="combat"></div>
+  <div id="resume1"></div>
+  <div id="resume2"></div>
+
     <SCRIPT LANGUAGE = "JavaScript">
       function suivant()
       {
@@ -69,14 +73,15 @@
       attaquer(cible) {
         if (this.sante > 0) {
           const degats = this.force;
-          console.log(
+          document.getElementById("combat").innerHTML = (
             `${this.nom} attaque ${
               cible.nom
             } et lui inflige ${degats} points de dégâts`
-          );
+            );
           cible.sante -= degats;
           if (cible.sante > 0) {
-            console.log(`${cible.nom} a encore ${cible.sante} points de vie`);
+            document.getElementById("combat2").innerHTML = (
+          `${cible.nom} a encore ${cible.sante} points de vie`)
           } else {
             cible.sante = 0;
             const bonusXP = 10;
@@ -104,24 +109,11 @@
   
     const alex = new Personnage("Alex", 50, 5, 1);
     const palermo = new Personnage("M. Palermo", 20, 10, 1);
-    const franco = new Personnage("M. Franco", 60, 5, 3);
-    const young = new Personnage("M. Young", 40, 20, 2);
   
+    document.getElementById("resume1").innerHTML = (alex.decrire());
+    document.getElementById("resume2").innerHTML = (palermo.decrire());
     alex.attaquer(palermo);
     palermo.attaquer(alex);
-    alex.attaquer(palermo);
-    palermo.attaquer(alex);
-    alex.attaquer(palermo);
-    palermo.attaquer(alex);
-    alex.attaquer(palermo);
-    palermo.attaquer(alex);
-  
-  
-    
-    console.log(palermo.decrire());
-    console.log(franco.decrire());
-    console.log(young.decrire());
-  
     
   </SCRIPT>      
   </body>

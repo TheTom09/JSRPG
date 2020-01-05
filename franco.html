@@ -16,29 +16,7 @@
 
     <div class="card-stats card1">
       <div class="stat">
-        <div class="value">50</sup></div>
-        <div class="type">PV</div>
-      </div>
-      <div class="stat border">
-        <div class="value">5</div>
-        <div class="type">Dégats</div>
-      </div>
-      <div class="stat">
-        <div class="value">1</div>
-        <div class="type">Résistance</div>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-image card2"></div>
-    <div class="card-text card2">
-      <span class="date">Niveau 1</span>
-      <h2>M. Palermo</h2>
-      <p>M. Palermo est le guerrier le plus rapide qu'est connu ce monde. Arriverez-vous à venir a bout de cet energumène ?</p>
-    </div>
-    <div class="card-stats card2">
-      <div class="stat">
-        <div class="value">20</sup></div>
+        <div class="value">60</sup></div>
         <div class="type">PV</div>
       </div>
       <div class="stat border">
@@ -46,7 +24,7 @@
         <div class="type">Dégats</div>
       </div>
       <div class="stat">
-        <div class="value">1</div>
+        <div class="value">2</div>
         <div class="type">Résistance</div>
       </div>
     </div>
@@ -73,28 +51,10 @@
       </div>
     </div>
   </div>
-  <div class="card">
-      <div class="card-image card4"></div>
-      <div class="card-text card4">
-        <span class="date">Niveau 3</span>
-        <h2>M. Young</h2>
-        <p>M. Young est le guerrier le plus puissant qu'est connu ce monde. Arriverez-vous à venir a bout de cet energumène ?</p>
-      </div>
-      <div class="card-stats card4">
-        <div class="stat">
-          <div class="value">40</sup></div>
-          <div class="type">PV</div>
-        </div>
-        <div class="stat border">
-          <div class="value">20</div>
-          <div class="type">Dégats</div>
-        </div>
-        <div class="stat">
-          <div class="value">2</div>
-          <div class="type">Résistance</div>
-        </div>
-      </div>
-    </div>
+  <div id="combat"></div>
+  <div id="resume1"></div>
+  <div id="resume2"></div>
+
     <SCRIPT LANGUAGE = "JavaScript">
       function suivant()
       {
@@ -113,7 +73,7 @@
       attaquer(cible) {
         if (this.sante > 0) {
           const degats = this.force;
-          console.log(
+          document.getElementById("combat").innerHTML = (
             `${this.nom} attaque ${
               cible.nom
             } et lui inflige ${degats} points de dégâts`
@@ -146,25 +106,29 @@
       }
     }
   
-    const alex = new Personnage("Alex", 50, 5, 1);
-    const palermo = new Personnage("M. Palermo", 20, 10, 1);
+    const alex = new Personnage("Alex", 60, 10, 2);
     const franco = new Personnage("M. Franco", 60, 5, 3);
-    const young = new Personnage("M. Young", 40, 20, 2);
   
-    alex.attaquer(palermo);
-    palermo.attaquer(alex);
-    alex.attaquer(palermo);
-    palermo.attaquer(alex);
-    alex.attaquer(palermo);
-    palermo.attaquer(alex);
-    alex.attaquer(palermo);
-    palermo.attaquer(alex);
+
+    document.getElementById("resume1").innerHTML = (alex.decrire());
+    document.getElementById("resume2").innerHTML = (franco.decrire());
+    alex.attaquer(franco);
+    franco.attaquer(alex);
+    alex.attaquer(franco);
+    franco.attaquer(alex);
+    alex.attaquer(franco);
+    franco.attaquer(alex);
+    alex.attaquer(franco);
+    franco.attaquer(alex);
+    alex.attaquer(franco);
+    franco.attaquer(alex);    
+    alex.attaquer(franco);
+    franco.attaquer(alex);
+    document.getElementById("resume1").innerHTML = (alex.decrire());
+    document.getElementById("resume2").innerHTML = (franco.decrire());
   
-  
-    
-    console.log(palermo.decrire());
+    console.log(alex.decrire());
     console.log(franco.decrire());
-    console.log(young.decrire());
   
     
   </SCRIPT>      
